@@ -1,4 +1,5 @@
 package Util;
+import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -40,6 +41,7 @@ public class PrintHandler {
             return userInput;
         }
     }
+
     public static void printOptions(List<String> options) {
         for (int index = 0; index < options.size(); index++) {
             int number = index + 1;

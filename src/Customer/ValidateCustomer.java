@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ValidateCustomer {
-    static ArrayList<String> customerList = new ArrayList<>();
+    protected static ArrayList<String> customerList = new ArrayList<>();
     static ArrayList<String> userList = new ArrayList<>();
     static ArrayList<String> passwordList = new ArrayList<>();
 
-    public ValidateCustomer(String userName, String password)   {
+    public  void validateCustomerDetails(String userName, String password)   {
         String name = userName;
         String enteredPassword = PrintHandler.messageDigest(password);
         getUserList();
@@ -21,7 +21,7 @@ public class ValidateCustomer {
             if  (name.contentEquals(userList.get(i).trim())){
                   if (validatePassword(enteredPassword,i)){
                       PrintHandler.clearScreen();
-                      PrintHandler.printBannerTitle();
+                      PrintHandler.showAppHeader();
                       System.out.println(" Welcome to our ATM banking services");
                       System.out.println("Customer Name is  Mr/Mrs : " + customerList.get(i));
                       Account.displayMenu();
@@ -31,6 +31,10 @@ public class ValidateCustomer {
         }System.out.println("Kindly check the User Name you entered. Please try Login again.");
 
 
+    }
+
+    public ValidateCustomer() {
+        getUserList();
     }
 
 

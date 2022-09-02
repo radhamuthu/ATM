@@ -1,9 +1,8 @@
 package Account;
 import Customer.Customer;
-import Login.Login;
+import HomePage.Home;
 import Util.PrintHandler;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,7 @@ public class Account extends Customer {
     }
 
     private static void logout() {
-      new  Login();
+      new Home();
     }
 
     private static void transferAmount() {

@@ -1,5 +1,4 @@
 package Util;
-import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -42,7 +41,7 @@ public class PrintHandler {
         }
     }
 
-    public static void printOptions(List<String> options) {
+    public static void showMenuOptions(List<String> options) {
         for (int index = 0; index < options.size(); index++) {
             int number = index + 1;
             String label = options.get(index);
@@ -63,8 +62,25 @@ public class PrintHandler {
         return result;
     }
 
-    public static void printBannerTitle() {
-        System.out.println(" ====The ATM === ");
+    public static void showAppHeader() {
+        System.out.println(" The ATM  Banking service ");
+        System.out.println();
     }
-
+    protected void showEmptyLine() {
+        System.out.println();
+    }
+    public void showAskUserForInput() {
+        System.out.print("Choose an option and press enter: ");
+    }
+    public void showInvalidInput() {
+        System.out.println("⚠️ Invalid option");
+    }
+    public static void exit() {
+        System.out.println("Thanks for using our Banking service.");
+        System.exit(1);
+    }
+    protected void onInvalidInput() {
+        showInvalidInput();
+        showAskUserForInput();
+    }
 }

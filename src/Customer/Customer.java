@@ -2,8 +2,6 @@ package Customer;
 
 import Account.*;
 import Util.PrintHandler;
-import Util.TextParser;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

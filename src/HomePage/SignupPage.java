@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class SignupPage extends ValidateCustomer  {
     public SignupPage (){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to our Signup Page - Create account with our banking.. ");
+        System.out.println("Welcome - Create account with our banking application.. ");
         Customer customer = new Customer();
         String fullName,userName,pass; boolean value= false;
             do{

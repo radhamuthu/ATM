@@ -63,10 +63,10 @@ public class PrintHandler {
     }
 
     public static void showAppHeader() {
-        System.out.println(" The ATM  Banking service ");
+        System.out.println("The ATM  Banking service ");
         System.out.println();
     }
-    protected void showEmptyLine() {
+    public static void showEmptyLine() {
         System.out.println();
     }
     public void showAskUserForInput() {

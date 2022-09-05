@@ -9,22 +9,29 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ValidateCustomer {
-    protected static ArrayList<String> customerList = new ArrayList<>();
-    static ArrayList<String> userList = new ArrayList<>();
-    static ArrayList<String> passwordList = new ArrayList<>();
+    protected static ArrayList<String> customerNameList = new ArrayList<>();
+    private static ArrayList<String> userNameList = new ArrayList<>();
+    private static ArrayList<String> passwordList = new ArrayList<>();
+    private static ArrayList<String> balanceList = new ArrayList<>();
+    private static ArrayList<String> customerList = new ArrayList<>();
 
     public  void validateCustomerDetails(String userName, String password)   {
         String name = userName;
         String enteredPassword = PrintHandler.messageDigest(password);
-        getUserList();
-        for (int i = 0; i < userList.size(); i++) {
-            if  (name.contentEquals(userList.get(i).trim())){
+        readCustomerList();
+        for (int i = 0; i < userNameList.size(); i++) {
+            if  (name.contentEquals(userNameList.get(i))){
                   if (validatePassword(enteredPassword,i)){
                       PrintHandler.clearScreen();
                       PrintHandler.showAppHeader();
-                      System.out.println(" Welcome to our ATM banking services");
+                      System.out.println("Welcome to our ATM banking services");
                       System.out.println("Customer Name is  Mr/Mrs : " + customerList.get(i));
-                      Account.displayMenu();
+                      ArrayList<String> customerSelected = new ArrayList();
+                      customerSelected.add(customerNameList.get(i));
+                      customerSelected.add(userNameList.get(i));
+                      customerSelected.add(passwordList.get(i));
+                      customerSelected.add(balanceList.get(i));
+                      new Account(customerSelected);
                   }
 
             }
@@ -34,13 +41,13 @@ public class ValidateCustomer {
     }
 
     public ValidateCustomer() {
-        getUserList();
+        readCustomerList();
     }
 
 
     public  boolean validatePassword(String enteredPassword , int i) {
         boolean value;
-        if (enteredPassword.contentEquals((passwordList.get(i).trim()))) {
+        if (enteredPassword.contentEquals((passwordList.get(i)))) {
             value= true;
         }
         else{
@@ -53,7 +60,7 @@ public class ValidateCustomer {
 
 
 
-    private void getUserList() {
+    private void readCustomerList() {
         try{File file = new File("customers.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
@@ -67,9 +74,10 @@ public class ValidateCustomer {
 
     private void setList(String line) {
         String[] data = line.split(",");
-        customerList.add(data[0]);
-        userList.add(data[1]);
-        passwordList.add(data[2]);
+        customerNameList.add(data[0].replace("[",""));
+        userNameList.add(data[1].trim());
+        passwordList.add(data[2].trim());
+        balanceList.add(data[3].replace("]","").trim());
 
     }
 }

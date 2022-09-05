@@ -1,19 +1,18 @@
-package HomePage;
+package Account;
 
 import Util.PrintHandler;
 
 import java.util.List;
 
-public class HomeView extends PrintHandler {
-    public HomeView(List<String> menuOptions) {
+public class AccountView extends PrintHandler {
+    public AccountView(List<String> menuOptions) {
         clearScreen();
         showAppHeader();
-        System.out.println("Welcome to our HomePage ") ;
+        System.out.println("Welcome to our ATM services ") ;
         showEmptyLine();
         System.out.println("The Menu options are ");
         showMenuOptions(menuOptions);
         showAskUserForInput();
-
+       // addAccountList(); addAccountList(); addAccountList();
     }
 }
-

@@ -1,16 +1,14 @@
-package HomePage;
-
+package Account;
 import Util.PrintHandler;
 
 import java.util.Scanner;
-
-public class HomeController extends PrintHandler {
-    private final HomeModel model;
-    private final HomeView view;
-     Scanner scanner = new Scanner(System.in);
-    public HomeController(HomeModel model, HomeView view) {
-             this.model = model;
-             this.view = view;
+public class AccountController extends PrintHandler {
+    private final AccountModel model;
+    private final AccountView view;
+    Scanner scanner = new Scanner(System.in);
+    public AccountController(AccountModel model, AccountView view) {
+        this.model = model;
+        this.view = view;
     }
 
     public void requestUserInput() {
@@ -23,6 +21,6 @@ public class HomeController extends PrintHandler {
                 onInvalidInput();
                 requestUserInput();
             }
-        }
     }
+}
 

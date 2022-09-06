@@ -1,10 +1,9 @@
-package Account;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Scanner;
+package account;
 
 public class bigDecimal {
+
+    public bigDecimal(String scanUserInput) {
+    }
 
     public static void main(String[] args){
 

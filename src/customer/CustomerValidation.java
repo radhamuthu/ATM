@@ -1,6 +1,6 @@
-package Customer;
+package customer;
 
-import Account.Account;
+import account.Account;
 import Util.PrintHandler;
 
 import java.io.File;
@@ -8,12 +8,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ValidateCustomer {
+public class CustomerValidation {
     protected static ArrayList<String> customerNameList = new ArrayList<>();
-    private static ArrayList<String> userNameList = new ArrayList<>();
-    private static ArrayList<String> passwordList = new ArrayList<>();
-    private static ArrayList<String> balanceList = new ArrayList<>();
-    private static ArrayList<String> customerList = new ArrayList<>();
+     protected static ArrayList<String> userNameList = new ArrayList<>();
+     protected static  ArrayList<String> passwordList = new ArrayList<>();
+     protected static  ArrayList<String> balanceList = new ArrayList<>();
+    protected static ArrayList<String> customerList = new ArrayList<>();
+    static int customerNumber;
+
+    protected static int getCustomerNumber() {
+        return customerNumber;
+    }
 
     public  void validateCustomerDetails(String userName, String password)   {
         String name = userName;
@@ -22,16 +27,12 @@ public class ValidateCustomer {
         for (int i = 0; i < userNameList.size(); i++) {
             if  (name.contentEquals(userNameList.get(i))){
                   if (validatePassword(enteredPassword,i)){
+                      customerNumber = i;
                       PrintHandler.clearScreen();
                       PrintHandler.showAppHeader();
                       System.out.println("Welcome to our ATM banking services");
-                      System.out.println("Customer Name is  Mr/Mrs : " + customerList.get(i));
-                      ArrayList<String> customerSelected = new ArrayList();
-                      customerSelected.add(customerNameList.get(i));
-                      customerSelected.add(userNameList.get(i));
-                      customerSelected.add(passwordList.get(i));
-                      customerSelected.add(balanceList.get(i));
-                      new Account(customerSelected);
+                      System.out.println("Customer Name is  Mr/Mrs : " + customerNameList.get(i));
+                      new Account();
                   }
 
             }
@@ -40,12 +41,7 @@ public class ValidateCustomer {
 
     }
 
-    public ValidateCustomer() {
-        readCustomerList();
-    }
-
-
-    public  boolean validatePassword(String enteredPassword , int i) {
+    private  boolean validatePassword(String enteredPassword , int i) {
         boolean value;
         if (enteredPassword.contentEquals((passwordList.get(i)))) {
             value= true;
@@ -57,10 +53,7 @@ public class ValidateCustomer {
         return value ;
     }
 
-
-
-
-    private void readCustomerList() {
+    private static void readCustomerList() {
         try{File file = new File("customers.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
@@ -72,12 +65,12 @@ public class ValidateCustomer {
         }
     }
 
-    private void setList(String line) {
+    private static void setList(String line) {
         String[] data = line.split(",");
         customerNameList.add(data[0].replace("[",""));
         userNameList.add(data[1].trim());
         passwordList.add(data[2].trim());
         balanceList.add(data[3].replace("]","").trim());
-
+        //customerList.add();
     }
 }

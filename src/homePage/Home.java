@@ -1,4 +1,4 @@
-package HomePage;
+package homePage;
 
 
 public class Home {

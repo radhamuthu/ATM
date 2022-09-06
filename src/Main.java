@@ -1,4 +1,4 @@
-import HomePage.Home;
+import homePage.Home;
 
 public class Main {
     public static void main(String[] args) {

@@ -6,20 +6,25 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3f5585e-a7a3-42bf-ad95-2c15d787d579" name="Changes" comment="2-sep">
-      <change afterPath="$PROJECT_DIR$/src/Account/AccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Account/AccountModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Account/AccountView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Account/Transaction.java" afterDir="false" />
+    <list default="true" id="b3f5585e-a7a3-42bf-ad95-2c15d787d579" name="Changes" comment="5-sep">
+      <change afterPath="$PROJECT_DIR$/src/account/AccountOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customer/CustomerDetailsUpdation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account/bigDecimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account/bigDecimal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ValidateCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ValidateCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HomePage/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomePage/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HomePage/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomePage/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HomePage/HomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomePage/HomeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HomePage/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomePage/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HomePage/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomePage/SignupPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/AccountModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/AccountView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/AccountView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/bigDecimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/bigDecimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ValidateCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/CustomerValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomePage/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomePage/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomePage/HomeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/HomeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomePage/HomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/HomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomePage/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomePage/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/SignupPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Util/PrintHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/PrintHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +60,6 @@
     "DefaultPlantUmlFileTemplate": "UML Class",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -69,12 +73,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="bigDecimal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Account.bigDecimal" />
+    <configuration name="account.bigDecimal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="account.bigDecimal" />
       <module name="ATM" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Account.*" />
+          <option name="PATTERN" value="account.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -85,7 +89,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.bigDecimal" />
+        <item itemvalue="Application.account.bigDecimal" />
       </list>
     </recent_temporary>
   </component>
@@ -119,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662126826923</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="5-sep">
+      <created>1662373097854</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662373097854</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +148,18 @@
     <MESSAGE value="31 - Aug" />
     <MESSAGE value="1 -sep" />
     <MESSAGE value="2-sep" />
-    <option name="LAST_COMMIT_MESSAGE" value="2-sep" />
+    <MESSAGE value="5-sep" />
+    <option name="LAST_COMMIT_MESSAGE" value="5-sep" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/account/AccountOperation.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

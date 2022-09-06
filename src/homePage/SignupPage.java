@@ -1,25 +1,24 @@
-package HomePage;
+package homePage;
 
-import Customer.*;
+import customer.*;
 import Util.PrintHandler;
 
-import java.io.Console;
 import java.util.Scanner;
 
-public class SignupPage extends ValidateCustomer  {
+public class SignupPage extends CustomerValidation {
     public SignupPage (){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome - Create account with our banking application.. ");
+        System.out.println("Welcome to Create account with our banking application.. ");
         Customer customer = new Customer();
         String fullName,userName,pass; boolean value= false;
-            do{
-                System.out.print("Enter the Customer Full Name of :");
+                System.out.print("Enter the Customer Full Name :");
                 fullName = PrintHandler.scanUserInput(sc.nextLine());
                 customer.setCustomerFullName(fullName);
+        do{
                 System.out.print("Enter user name :");
                 userName=PrintHandler.scanUserInput(sc.nextLine());
-                for (String s : customerList) {
-                    if (userName.equalsIgnoreCase(s.trim())) {
+                for (String s : customerNameList) {
+                    if (fullName.equalsIgnoreCase(s.trim())) {
                         System.out.println(" Sorry the User Name already exists. Please try with different Name .");
                         value = true;
                     }

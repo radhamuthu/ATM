@@ -76,7 +76,7 @@ public class PrintHandler {
         System.out.println("⚠️ Invalid option");
     }
     public static void exit() {
-        System.out.println("Thanks for using our Banking service.");
+        System.out.println("Thanks for using our ATM Banking service.");
         System.exit(1);
     }
     protected void onInvalidInput() {

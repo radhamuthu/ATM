@@ -4,12 +4,12 @@ import Util.PrintHandler;
 
 import java.util.List;
 
-public class AccountView extends PrintHandler {
+public class AccountView  {
     public AccountView(List<String> menuOptions) {
-        showEmptyLine();
+        PrintHandler.showEmptyLine();
         System.out.println("The Menu options are ");
-        showMenuOptions(menuOptions);
-        showAskUserForInput();
+        PrintHandler.showMenuOptions(menuOptions);
+        PrintHandler.showAskUserForInput();
 
     }
 }

@@ -1,17 +1,31 @@
 package customer;
 
-import Util.PrintHandler;
 import java.io.*;
+import java.math.BigDecimal;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    private String customerFullName;
-    private String userName;
-    private String password;
-    private  static String balance;
+    private final String customerFullName;
+    private static String userName;
+    private static String password;
+    private static BigDecimal balance;
     protected static List<String> customerDetail;
-    protected static List<String> customerDetailUpdate;
+
+
+    public Customer(String customerFullName, String userName, String password, BigDecimal balance) {
+        this.customerFullName = customerFullName;
+        Customer.userName = userName;
+        this.password = password;
+        this.balance = balance;
+        createList();
+    }
+
 
     public void createList() {
         customerDetail = new ArrayList<>();
@@ -38,56 +52,47 @@ public class Customer {
         return this.customerFullName;
     }
 
-    public void setCustomerFullName(String customerFullName) {
-        this.customerFullName = customerFullName;
-    }
 
-    public String getUserName() {
+    public static String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = PrintHandler.messageDigest(password);
+
+
+    public static String getBalance() {
+        return String.valueOf(balance);
     }
 
-    public String getBalance() {
-        return this.balance = String.valueOf(0);
+    public static void setBalance(BigDecimal balance) {
+        if (balance.doubleValue() > 0.0) {
+           Customer.balance = balance;
+        } else Customer.balance = BigDecimal.valueOf(0.0);
     }
 
-    public static void setBalance(Double balance) {
-        if (balance > 0) {
-            Customer.balance = String.valueOf(balance);
-        } else {
-            Customer.balance = String.valueOf(0);
-        }
-    }
-/*
-    public static void updatelist() {
-        customerDetailUpdate = new ArrayList<>();
-        customerDetailUpdate.add(getCustomerFullName());
-        customerDetailUpdate.add(getUserName());
-        customerDetailUpdate.add(getPassword());
-        customerDetailUpdate.add(getBalance());
-        updateCustomerDetailsDB();
-    }
+    public static void updatefile(int number, String newLine) throws IOException {
+            int line = 0;
+        String currentLine;
+        String oldLine ="";
+        File file = new File("customers.txt");
 
-    private void updateCustomerDetailsDB() {
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("customers.txt", true));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            while ((currentLine = bufferedReader.readLine()) != null) {
+                if (number == line) {
+                    oldLine = currentLine;
+                }
+                line++;
+            }bufferedReader.close();
 
-            bw.write(String.valueOf(customerDetailUpdate));
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("File not found");
-        }
-    } */
+        Path path = Paths.get("customers.txt");
+        Charset charset = StandardCharsets.UTF_8;
+
+        String content = Files.readString(path, charset);
+        content = content.replace(oldLine, newLine);
+        Files.writeString(path, content, charset);
+
+    }
 }

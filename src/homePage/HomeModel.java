@@ -10,6 +10,7 @@ public class HomeModel {
     public List<String> getMenuOptions() {
         return menuOptions;
     }
+
     public void handleOption(int selectedOption) throws IndexOutOfBoundsException {
         switch (selectedOption) {
             case 1 -> new SignupPage();

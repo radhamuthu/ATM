@@ -10,22 +10,22 @@ import java.util.Scanner;
 
 public class CustomerValidation {
 
-    public static final ArrayList<String> customerNameList = new ArrayList<>();
-    public static final ArrayList<String> userNameList = new ArrayList<>();
-    public static final ArrayList<String> passwordList = new ArrayList<>();
-    public static final ArrayList<String> balanceList = new ArrayList<>();
+    public  static ArrayList<String> customerNameList = new ArrayList<>();
+    public static  ArrayList<String> userNameList = new ArrayList<>();
+    public static  ArrayList<String> passwordList = new ArrayList<>();
+    public static  ArrayList<String> balanceList = new ArrayList<>();
     static int customerNumber;
 
 
-    public CustomerValidation() {
-        readCustomerList("customers.txt");
-    }
+
+
+
 
     public int getCustomerNumber() {
         return customerNumber;
     }
 
-     public static void readCustomerList(String name) {
+    public static void readCustomerList(String name) {
         try {
             String file_path = name;
             File file = new File(file_path);
@@ -39,18 +39,18 @@ public class CustomerValidation {
         }
     }
 
-      static void setList(String line) {
+    static void setList(String line) {
         String[] data = line.split(",");
-        customerNameList.add(data[0].replace("[", ""));
-        userNameList.add(data[1].trim());
-        passwordList.add(data[2].trim());
-        balanceList.add(data[3].replace("]", "").trim());
+         customerNameList.add(data[0].replace("[", ""));
+         userNameList.add(data[1].trim());
+         passwordList.add(data[2].trim());
+         balanceList.add(data[3].replace("]", "").trim());
 
     }
-
-    public void validateCustomerDetails(String userName, String password) {
+    public static void validateCustomerDetails(String userName, String password) {
         String name = userName;
         String enteredPassword = PrintHandler.messageDigest(password);
+        readCustomerList("customers.txt");
         boolean value = true;
         for (int i = 0; i < userNameList.size(); i++) {
             if (name.contentEquals(userNameList.get(i))) {
@@ -61,16 +61,17 @@ public class CustomerValidation {
                         PrintHandler.showAppHeader();
                         System.out.println("Welcome to our ATM banking services");
                         System.out.println("Customer Name is  Mr/Mrs : " + customerNameList.get(i));
+                        readCustomerList("customers.txt");
                         new Account();
                     }
                     while (value);
                 }
             }
-         }System.out.println("Kindly check the User Name and Password you entered. Please try Login again.");
-        }
+        }System.out.println("Kindly check the User Name and Password you entered. Please try Login again.");
+    }
 
 
-    private boolean validatePassword(String enteredPassword, int i) {
+    private static boolean validatePassword(String enteredPassword, int i) {
         boolean value;
         if (enteredPassword.contentEquals((passwordList.get(i)))) {
             value = true;
@@ -80,4 +81,6 @@ public class CustomerValidation {
         }
         return value;
     }
+
+
 }

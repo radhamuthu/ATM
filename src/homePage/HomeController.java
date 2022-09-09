@@ -23,6 +23,7 @@ public class HomeController extends PrintHandler {
         } catch (NumberFormatException | IndexOutOfBoundsException | InputMismatchException exception) {
             onInvalidInput();
             requestUserInput();
+
         }
     }
 }

@@ -17,7 +17,7 @@ public class AccountModel  {
         AccountOperation accountOperation = new AccountOperation();
 
         switch (selectedOption) {
-            case 1 -> accountOperation.accountSettings();
+            case 1 -> new AccountDetails();
             case 2 -> accountOperation.withdrawAmount();
             case 3 -> accountOperation.depositAmount();
             case 4 -> accountOperation.transferAmount();

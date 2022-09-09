@@ -74,7 +74,7 @@ public class Customer {
     }
 
     public static void updatefile(int number, String newLine) throws IOException {
-            int line = 0;
+        int line = 0;
         String currentLine;
         String oldLine ="";
         File file = new File("customers.txt");
@@ -83,16 +83,17 @@ public class Customer {
             while ((currentLine = bufferedReader.readLine()) != null) {
                 if (number == line) {
                     oldLine = currentLine;
+                    Path path = Paths.get("customers.txt");
+                    Charset charset = StandardCharsets.UTF_8;
+
+                    String content = Files.readString(path, charset);
+                    content = content.replace(oldLine, newLine);
+                    Files.writeString(path, content, charset);
                 }
                 line++;
             }bufferedReader.close();
 
-        Path path = Paths.get("customers.txt");
-        Charset charset = StandardCharsets.UTF_8;
 
-        String content = Files.readString(path, charset);
-        content = content.replace(oldLine, newLine);
-        Files.writeString(path, content, charset);
 
     }
 }

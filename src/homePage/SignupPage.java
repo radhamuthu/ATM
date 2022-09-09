@@ -2,6 +2,7 @@ package homePage;
 
 import Util.PrintHandler;
 import customer.Customer;
+
 import customer.CustomerValidation;
 import java.math.BigDecimal;
 
@@ -13,8 +14,17 @@ public class SignupPage extends CustomerValidation {
         String fullName, userName, pass;
         BigDecimal balance;
         boolean value = false;
-        System.out.print("Enter the Customer Full Name :");
-        fullName = PrintHandler.scanUserStringInput();
+        do {
+            System.out.print("Enter the Customer Full Name :");
+            fullName = PrintHandler.scanUserStringInput();
+            for (String s : customerNameList) {
+                if (fullName.equalsIgnoreCase(s.trim())) {
+                    System.out.println(" Sorry the Customer Name already exists. Please try with different Name .");
+                    value = true;
+                }
+            }
+        } while (value);
+
         do {
             System.out.print("Enter user name :");
             userName = PrintHandler.scanUserStringInput();

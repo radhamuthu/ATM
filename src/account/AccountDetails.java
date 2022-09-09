@@ -3,11 +3,14 @@ package account;
 import Util.PrintHandler;
 import customer.Customer;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
+/*
+Accountdetails for view balance adn change ueserName and password and update the changes in Customer.updateFile
+ */
 public class AccountDetails extends AccountOperation {
     private static final List<String> menuOptions = List.of("View Balance", "Change User Name", "Change Password");
     Scanner sc = new Scanner(System.in);
@@ -59,7 +62,7 @@ public class AccountDetails extends AccountOperation {
 
             String newLine = (customerFullName + "," + newUserName + "," + customerPassword + "," + accountBalance);
             try {
-                Customer.updatefile(number, newLine);
+                Customer.updateFile(number, newLine);
                 System.out.println("Updated Successfully");
             } catch (IOException e) {
                 System.out.println("error in updating user name");
@@ -73,7 +76,7 @@ public class AccountDetails extends AccountOperation {
             String newPassword = PrintHandler.messageDigest(PrintHandler.scanUserInput(sc.nextLine()));
             String newLine = (customerFullName + "," + customerUserName + "," + newPassword + "," + accountBalance);
             try {
-                Customer.updatefile(number, newLine);
+                Customer.updateFile(number, newLine);
                 System.out.println("Updated Successfully");
             } catch (IOException e) {
                 System.out.println("error in updating password");
@@ -96,14 +99,14 @@ public class AccountDetails extends AccountOperation {
         String enteredUserName = PrintHandler.scanUserInput(sc.nextLine());
         if (enteredUserName == customerUserName) {
             System.out.print("Enter your old password : ");
-            // for terminal use  - uncomment next code and comment scanner input and change parameters in validateCustomer details
-            //Console console = System.console();
-            // char[] password = console.readPassword();
-            //String password2 = String.valueOf(password);
-            //String enteredPasswordHashValue = PrintHandler.messageDigest(password2);
+            // for terminal use  - uncomment next code and comment scanner input
+            Console console = System.console();
+            char[] password = console.readPassword();
+            String password2 = String.valueOf(password);
+            String enteredPasswordHashValue = PrintHandler.messageDigest(password2);
             // for IDE
-            String enteredPassword = PrintHandler.scanUserInput(sc.nextLine());
-            String enteredPasswordHashValue = PrintHandler.messageDigest(enteredPassword);
+            //String enteredPassword = PrintHandler.scanUserInput(sc.nextLine());
+            //String enteredPasswordHashValue = PrintHandler.messageDigest(enteredPassword);
             readCustomerList("customers.txt");
             for (int i = 0; i < userNameList.size(); i++) {
                 if (enteredUserName.contentEquals(userNameList.get(i))) {

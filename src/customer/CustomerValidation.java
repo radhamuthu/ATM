@@ -7,7 +7,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+CustomerValidation to validate with username and password with  each other using reading from saved text file
+with the help of arraylist CustomerName,UserName,Password and balance and using their position by using their index number where
+it happened in  the list
+ */
 public class CustomerValidation {
 
     public static ArrayList<String> customerNameList = new ArrayList<>();
@@ -16,8 +20,22 @@ public class CustomerValidation {
     public static ArrayList<String> balanceList = new ArrayList<>();
     static int customerNumber;
 
+    private static boolean validatePassword(String enteredPassword, int i) {
+        boolean value;
+        if (enteredPassword.contentEquals((passwordList.get(i)))) {
+            value = true;
+        } else {
+            System.out.println("Kindly check the Password you entered. Please try Login again.");
+            value = false;
+        }
+        return value;
+    }
+
     public void readCustomerList(String name) {
-        customerNameList.clear();userNameList.clear(); passwordList.clear();balanceList.clear();
+        customerNameList.clear();
+        userNameList.clear();
+        passwordList.clear();
+        balanceList.clear();
         try {
             String file_path = name;
             File file = new File(file_path);
@@ -31,9 +49,9 @@ public class CustomerValidation {
         }
     }
 
-     void setList(String line) {
+    void setList(String line) {
         String[] data = line.split(",");
-         customerNameList.add(data[0].replace("[", ""));
+        customerNameList.add(data[0].replace("[", ""));
         userNameList.add(data[1].trim());
         passwordList.add(data[2].trim());
         balanceList.add(data[3].replace("]", "").trim());
@@ -62,17 +80,6 @@ public class CustomerValidation {
             }
         }
         System.out.println("Kindly check the User Name and Password you entered. Please try Login again.");
-    }
-
-    private static boolean validatePassword(String enteredPassword, int i) {
-        boolean value;
-        if (enteredPassword.contentEquals((passwordList.get(i)))) {
-            value = true;
-        } else {
-            System.out.println("Kindly check the Password you entered. Please try Login again.");
-            value = false;
-        }
-        return value;
     }
 
     public int getCustomerNumber() {

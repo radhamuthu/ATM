@@ -3,7 +3,9 @@ package homePage;
 import Util.PrintHandler;
 
 import java.util.List;
-
+/*
+HomeView to print the menu options of home
+ */
 public class HomeView extends PrintHandler {
     public HomeView(List<String> menuOptions) {
         clearScreen();

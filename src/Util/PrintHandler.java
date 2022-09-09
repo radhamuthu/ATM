@@ -7,7 +7,9 @@ import java.util.Base64;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
+/*
+Printhandler is support class to support in other class for asking input clear screen and many more like this
+ */
 public class PrintHandler {
     public static void clearScreen() {
         String OperatingSystem = System.getProperty("os.name");

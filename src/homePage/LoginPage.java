@@ -3,8 +3,11 @@ package homePage;
 import Util.PrintHandler;
 import customer.CustomerValidation;
 
+import java.io.Console;
 import java.util.Scanner;
-
+/*
+LoginPage is used to get username and password and  validate with the input in CustomersValidation class
+ */
 public class LoginPage extends CustomerValidation {
     public LoginPage() {
         Scanner sc = new Scanner(System.in);
@@ -18,13 +21,13 @@ public class LoginPage extends CustomerValidation {
         System.out.print("Enter password : ");
 
         // switch to terminal while working this code
-        //Console console = System.console();
-        //char[] password = console.readPassword();
-        //String password2 = String.valueOf(password);
-        //validateCustomerDetails(userName, password2);
+        Console console = System.console();
+        char[] password = console.readPassword();
+        String password2 = String.valueOf(password);
+        validateCustomerDetails(userName, password2);
         // for IDE uncomment the below
-        pass = PrintHandler.scanUserInput(sc.nextLine());
-        validateCustomerDetails(userName, pass);
+        //pass = PrintHandler.scanUserInput(sc.nextLine());
+        //validateCustomerDetails(userName, pass);
     }
 
 }

@@ -7,7 +7,11 @@ import customer.CustomerValidation;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
-
+/*
+Account operation using CustomerValidation to read customer details from file  and use the index number to match with other fields
+to perform deposit , withdraw, tranfer
+and also to update the changes made during above action in the file using Customer.updateFile method
+ */
 
 public class AccountOperation extends CustomerValidation {
     private static final Scanner sc = new Scanner(System.in);
@@ -37,7 +41,7 @@ public class AccountOperation extends CustomerValidation {
             System.out.println(" new available balance " + accountBalance);
             String newLine = (customerFullName + "," + customerUserName + "," + customerPassword + "," + accountBalance);
             try {
-                Customer.updatefile(number, newLine);
+                Customer.updateFile(number, newLine);
             } catch (IOException e) {
                 System.out.println("error in withdraw fiel to update");
 
@@ -56,7 +60,7 @@ public class AccountOperation extends CustomerValidation {
         System.out.println(" new available balance " + accountBalance);
         String newLine = (customerFullName + "," + customerUserName + "," + customerPassword + "," + accountBalance);
         try {
-            Customer.updatefile(number, newLine);
+            Customer.updateFile(number, newLine);
         } catch (IOException e) {
             System.out.println("error in deposit field to update");
         }
@@ -97,7 +101,7 @@ public class AccountOperation extends CustomerValidation {
             accountBalance = accountBalance.subtract(transferAmount);
             String newLine = (customerFullName + "," + customerUserName + "," + customerPassword + "," + accountBalance);
             try {
-                Customer.updatefile(number, newLine);
+                Customer.updateFile(number, newLine);
                 BigDecimal amountToTransferAnotherCustomer = transferAmount;
                 UpdateTransferCustomer(transferCustomerNumber, amountToTransferAnotherCustomer);
             } catch (IOException e) {
@@ -122,7 +126,7 @@ public class AccountOperation extends CustomerValidation {
         balanB = balanB.add(transferAmount);
         String newLine = (fullName + "," + userName + "," + pass + "," + balanB);
         try {
-            Customer.updatefile(transferNumber, newLine);
+            Customer.updateFile(transferNumber, newLine);
         } catch (IOException e) {
             System.out.println("error in  field to update");
         }

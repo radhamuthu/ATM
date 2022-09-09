@@ -9,7 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+Customer have constructor to save customer details and save to file using list
+ */
 public class Customer {
     protected static List<String> customerDetail;
     private static String userName;
@@ -44,7 +46,7 @@ public class Customer {
         } else Customer.balance = BigDecimal.valueOf(0.0);
     }
 
-    public static void updatefile(int number, String newLine) throws IOException {
+    public static void updateFile(int number, String newLine) throws IOException {
         int line = 0;
         String currentLine;
         String oldLine = "";

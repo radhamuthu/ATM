@@ -3,7 +3,9 @@ package homePage;
 import Util.PrintHandler;
 
 import java.util.List;
-
+/*
+Menu options are given here in Home model
+ */
 public class HomeModel {
     private static final List<String> menuOptions = List.of("SignUp (To become our customer)", "Login (Already our customer)", "Exit");
 

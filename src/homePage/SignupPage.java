@@ -2,8 +2,8 @@ package homePage;
 
 import Util.PrintHandler;
 import customer.Customer;
-
 import customer.CustomerValidation;
+
 import java.math.BigDecimal;
 
 
@@ -46,7 +46,7 @@ public class SignupPage extends CustomerValidation {
 
         //customer.setPassword(password2);
         System.out.println(" The Customer account is created Successfully for you ");
-        Customer customer = new Customer(fullName,userName,pass,balance);
+        Customer customer = new Customer(fullName, userName, pass, balance);
         System.out.println("You can hereafter choose login option for further process....");
         System.out.println("Wishing you a Safe banking ");
     }

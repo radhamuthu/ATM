@@ -11,21 +11,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    private final String customerFullName;
+    protected static List<String> customerDetail;
     private static String userName;
     private static String password;
     private static BigDecimal balance;
-    protected static List<String> customerDetail;
+    private final String customerFullName;
 
 
     public Customer(String customerFullName, String userName, String password, BigDecimal balance) {
         this.customerFullName = customerFullName;
         Customer.userName = userName;
-        this.password = password;
-        this.balance = balance;
+        Customer.password = password;
+        Customer.balance = balance;
         createList();
     }
 
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static String getBalance() {
+        return String.valueOf(balance);
+    }
+
+    public static void setBalance(BigDecimal balance) {
+        if (balance.doubleValue() > 0.0) {
+            Customer.balance = balance;
+        } else Customer.balance = BigDecimal.valueOf(0.0);
+    }
+
+    public static void updatefile(int number, String newLine) throws IOException {
+        int line = 0;
+        String currentLine;
+        String oldLine = "";
+        File file = new File("customers.txt");
+
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        while ((currentLine = bufferedReader.readLine()) != null) {
+            if (number == line) {
+                oldLine = currentLine;
+                Path path = Paths.get("customers.txt");
+                Charset charset = StandardCharsets.UTF_8;
+
+                String content = Files.readString(path, charset);
+                content = content.replace(oldLine, newLine);
+                Files.writeString(path, content, charset);
+            }
+            line++;
+        }
+        bufferedReader.close();
+
+
+    }
 
     public void createList() {
         customerDetail = new ArrayList<>();
@@ -35,7 +76,6 @@ public class Customer {
         customerDetail.add(getBalance());
         storeCustomerDetailsDB();
     }
-
 
     private void storeCustomerDetailsDB() {
         try {
@@ -50,50 +90,5 @@ public class Customer {
 
     public String getCustomerFullName() {
         return this.customerFullName;
-    }
-
-
-    public static String getUserName() {
-        return userName;
-    }
-
-    public static String getPassword() {
-        return password;
-    }
-
-
-
-    public static String getBalance() {
-        return String.valueOf(balance);
-    }
-
-    public static void setBalance(BigDecimal balance) {
-        if (balance.doubleValue() > 0.0) {
-           Customer.balance = balance;
-        } else Customer.balance = BigDecimal.valueOf(0.0);
-    }
-
-    public static void updatefile(int number, String newLine) throws IOException {
-        int line = 0;
-        String currentLine;
-        String oldLine ="";
-        File file = new File("customers.txt");
-
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            while ((currentLine = bufferedReader.readLine()) != null) {
-                if (number == line) {
-                    oldLine = currentLine;
-                    Path path = Paths.get("customers.txt");
-                    Charset charset = StandardCharsets.UTF_8;
-
-                    String content = Files.readString(path, charset);
-                    content = content.replace(oldLine, newLine);
-                    Files.writeString(path, content, charset);
-                }
-                line++;
-            }bufferedReader.close();
-
-
-
     }
 }

@@ -3,6 +3,7 @@ package account;
 import Util.PrintHandler;
 import customer.Customer;
 import customer.CustomerValidation;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ public class AccountOperation extends CustomerValidation {
     BigDecimal bigDecimalUserInputAmount;
 
 
-     int number = getCustomerNumber();
+    int number = getCustomerNumber();
 
     public AccountOperation() {
 
@@ -61,9 +62,10 @@ public class AccountOperation extends CustomerValidation {
         }
 
     }
-    public void transferAmount() {
 
-         getTransferCustomerName();
+    public void transferAmount() {
+        readCustomerList("customers.txt");
+        getTransferCustomerName();
 
 
     }
@@ -77,9 +79,9 @@ public class AccountOperation extends CustomerValidation {
 
         for (int i = 0; i < userNameList.size(); i++) {
             if (transferUsername.equalsIgnoreCase(userNameList.get(i))) {
-                int transferCustomerNumber =i;
-                 TransferAmountFromCustomer(transferCustomerNumber);
-                 break;
+                int transferCustomerNumber = i;
+                TransferAmountFromCustomer(transferCustomerNumber);
+                break;
             } else if (i == userNameList.size()) {
                 System.out.println("User name is not in our ATM system");
             }
@@ -96,7 +98,7 @@ public class AccountOperation extends CustomerValidation {
             String newLine = (customerFullName + "," + customerUserName + "," + customerPassword + "," + accountBalance);
             try {
                 Customer.updatefile(number, newLine);
-                BigDecimal amountToTransferAnotherCustomer= transferAmount;
+                BigDecimal amountToTransferAnotherCustomer = transferAmount;
                 UpdateTransferCustomer(transferCustomerNumber, amountToTransferAnotherCustomer);
             } catch (IOException e) {
                 System.out.println("error in tranfer to customer  update");
@@ -128,9 +130,6 @@ public class AccountOperation extends CustomerValidation {
 
 
     }
-
-
-
 
 
 }

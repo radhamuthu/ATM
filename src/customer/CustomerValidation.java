@@ -10,22 +10,14 @@ import java.util.Scanner;
 
 public class CustomerValidation {
 
-    public  static ArrayList<String> customerNameList = new ArrayList<>();
-    public static  ArrayList<String> userNameList = new ArrayList<>();
-    public static  ArrayList<String> passwordList = new ArrayList<>();
-    public static  ArrayList<String> balanceList = new ArrayList<>();
+    public static ArrayList<String> customerNameList = new ArrayList<>();
+    public static ArrayList<String> userNameList = new ArrayList<>();
+    public static ArrayList<String> passwordList = new ArrayList<>();
+    public static ArrayList<String> balanceList = new ArrayList<>();
     static int customerNumber;
 
-
-
-
-
-
-    public int getCustomerNumber() {
-        return customerNumber;
-    }
-
-    public static void readCustomerList(String name) {
+    public void readCustomerList(String name) {
+        customerNameList.clear();userNameList.clear(); passwordList.clear();balanceList.clear();
         try {
             String file_path = name;
             File file = new File(file_path);
@@ -39,15 +31,16 @@ public class CustomerValidation {
         }
     }
 
-    static void setList(String line) {
+     void setList(String line) {
         String[] data = line.split(",");
          customerNameList.add(data[0].replace("[", ""));
-         userNameList.add(data[1].trim());
-         passwordList.add(data[2].trim());
-         balanceList.add(data[3].replace("]", "").trim());
+        userNameList.add(data[1].trim());
+        passwordList.add(data[2].trim());
+        balanceList.add(data[3].replace("]", "").trim());
 
     }
-    public static void validateCustomerDetails(String userName, String password) {
+
+    public void validateCustomerDetails(String userName, String password) {
         String name = userName;
         String enteredPassword = PrintHandler.messageDigest(password);
         readCustomerList("customers.txt");
@@ -67,9 +60,9 @@ public class CustomerValidation {
                     while (value);
                 }
             }
-        }System.out.println("Kindly check the User Name and Password you entered. Please try Login again.");
+        }
+        System.out.println("Kindly check the User Name and Password you entered. Please try Login again.");
     }
-
 
     private static boolean validatePassword(String enteredPassword, int i) {
         boolean value;
@@ -80,6 +73,10 @@ public class CustomerValidation {
             value = false;
         }
         return value;
+    }
+
+    public int getCustomerNumber() {
+        return customerNumber;
     }
 
 

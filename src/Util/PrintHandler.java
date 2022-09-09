@@ -72,7 +72,7 @@ public class PrintHandler {
     }
 
     public static String messageDigest(String password) {
-        String result ;
+        String result;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] mdRet = md.digest(password.getBytes());
@@ -115,14 +115,14 @@ public class PrintHandler {
 
         try {
             Scanner sc = new Scanner(System.in);
-             String userInput = ((sc.nextLine()));
+            String userInput = ((sc.nextLine()));
             if (userInput.trim().isEmpty()) {
                 throw new InputMismatchException();
             } else {
                 return Double.parseDouble(userInput);
             }
 
-        } catch (InputMismatchException| NumberFormatException e) {
+        } catch (InputMismatchException | NumberFormatException e) {
             showInvalidInput();
             System.out.print("Enter a valid input: ");
             scanUserNumberInput();

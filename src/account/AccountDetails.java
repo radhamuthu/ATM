@@ -3,7 +3,6 @@ package account;
 import Util.PrintHandler;
 import customer.Customer;
 
-import java.io.Console;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -14,7 +13,7 @@ public class AccountDetails extends AccountOperation {
     Scanner sc = new Scanner(System.in);
 
     public AccountDetails() {
-
+        readCustomerList("customers.txt");
         PrintHandler.showMenuOptions(menuOptions);
         PrintHandler.showAskUserForInput();
 
@@ -80,39 +79,45 @@ public class AccountDetails extends AccountOperation {
                 System.out.println("error in updating password");
             }
         } else {
-            System.out.println("CAnt perform the operation since the credits entered were wrong");
+            System.out.println("Cant perform the operation since the credits entered were wrong");
         }
     }
 
 
     private void viewBalance() {
-
+        readCustomerList("customers.txt");
         System.out.println("The account User name is Mr/Mrs :" + customerFullName);
-        System.out.println("The account balance in SEK" + accountBalance);
+        System.out.println("The account balance in SEK :" + accountBalance);
     }
 
     private boolean changeUserDetails() {
+        boolean value = false;
         System.out.print("Enter your old User name :");
         String enteredUserName = PrintHandler.scanUserInput(sc.nextLine());
-        System.out.print("Enter your old password : ");
-        // for terminal use  - uncomment next code and comment scanner input and change parameters in validateCustomer details
-        Console console = System.console();
-        char[] password = console.readPassword();
-        String password2 = String.valueOf(password);
-        String enteredPasswordHashValue = PrintHandler.messageDigest(password2);
-        // for IDE
-        //String enteredPassword = PrintHandler.scanUserInput(sc.nextLine());
-        //String enteredPasswordHashValue = PrintHandler.messageDigest(enteredPassword);
-
-        readCustomerList("customers.txt");
-        boolean value = false;
-        for (int i = 0; i < userNameList.size(); i++) {
-            if (enteredUserName.contentEquals(userNameList.get(i))) {
-                if (validPassword(enteredPasswordHashValue, i)) {
-                    return true;
+        if (enteredUserName == customerUserName) {
+            System.out.print("Enter your old password : ");
+            // for terminal use  - uncomment next code and comment scanner input and change parameters in validateCustomer details
+            //Console console = System.console();
+            // char[] password = console.readPassword();
+            //String password2 = String.valueOf(password);
+            //String enteredPasswordHashValue = PrintHandler.messageDigest(password2);
+            // for IDE
+            String enteredPassword = PrintHandler.scanUserInput(sc.nextLine());
+            String enteredPasswordHashValue = PrintHandler.messageDigest(enteredPassword);
+            readCustomerList("customers.txt");
+            for (int i = 0; i < userNameList.size(); i++) {
+                if (enteredUserName.contentEquals(userNameList.get(i))) {
+                    if (validPassword(enteredPasswordHashValue, i)) {
+                        return true;
+                    }
                 }
             }
+
+        } else {
+            System.out.println("You giving a wrong User name of yours .  ");
         }
         return value;
     }
+
+
 }
